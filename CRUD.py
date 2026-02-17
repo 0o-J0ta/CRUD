@@ -1,7 +1,9 @@
 #CRUD
-
+#Para importar essa biblioteca certifique-se que instalou o pacote mysql-connector-python na sua IDE
+#comando: pip install mysql-connector-python
 import mysql.connector
 
+#Nessa primeira parte você precisa criar a conexão com o seu banco de dados e importar as seguintes infos para acessar
 conexao = mysql.connector.connect(
     host="IP_HOST",
     user='USUARIO',
@@ -10,6 +12,7 @@ conexao = mysql.connector.connect(
 
 )
 
+#Aqui e criado a função de "cursor" que vai servir como um mecanismo de controle que permite executar os comandos do CRUD
 cursor = conexao.cursor()
 
 #Create
@@ -39,5 +42,6 @@ comando_delete = f'DELETE FROM VENDAS WHERE ID_VENDA=5'
 cursor.execute(comando_delete)
 conexao.commit()
 
+#Essas funções vão finalizar a conexão a cada um dos comados utilizados.
 cursor.close()
 conexao.close()
